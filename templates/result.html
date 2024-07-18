@@ -1,0 +1,65 @@
+{% extends "layouts.html" %} {% block title %}Hasil {% endblock %} {% block
+content %}
+<div class="container-fluid" style="height: 80vh">
+  <main>
+    <header class="page-header page-header-dark bg-pink">
+      <div class="container-xl px-4">
+        <div class="page-header-content pt-4">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-auto mt-1">
+              <h1 class="page-header-title">
+                <div class="page-header-icon">
+                  <i data-feather="layout"></i>
+                </div>
+                Hasil
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="text-center card-title">VGG-19</h5>
+
+            <div class="text-center">
+              Result : {% if data %} {{data.result_vgg19}} {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="text-center card-title">ResNet152</h5>
+
+            <div class="text-center">
+              Result : {% if data %} {{data.result_resnet152}} {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row"> -->
+      <div class="card mx-auto mt-3" style="width: 60vh">
+        <div class="card-body">
+          <h5 class="text-center card-title">Image</h5>
+          {% if data %}
+          <img
+            class="responsive"
+            src="{{ url_for('static',filename=data.image) }}"
+            alt="image"
+          />
+          <h5 class="text-center mt-3">
+            Gambar kanker paru besar diatas tergolong class
+            <span class="text-uppercase"> <b> {{data.result_vgg19}} </b> </span>
+          </h5>
+          {% endif %}
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}
